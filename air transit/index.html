@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyNavIndia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="top">
+        <p>Welcome to SkyNav.com Continue to india website <b><a href="#">SkyNavIndia.com</a></b></p>
+    </div>
+    <div id="logo">
+        <img src="Tour Travel Business Logo.png" width="150" height="150" alt="logo">
+        <div class="dropdown">
+            <button onclick="toggleDropdown('homeDropdown')" class="dropbtn">HOME</button>
+        </div>
+        <div class="dropdown">
+            <button onclick="toggleDropdown('holidayDropdown')" class="dropbtn">HOLIDAY PACKAGES</button>
+            <div id="holidayDropdown" class="dropdown-content">
+                <a href="internationalpackages.html">INTERNATIONAL PACKAGES</a>
+                <a href="daytrip.html">DAY TRIP</a>
+                <a href="#">CUSTOMIZE PACKAGES</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="toggleDropdown('testimonialDropdown')" class="dropbtn">TESTIMONIAL</button>
+        </div>
+        <div class="dropdown">
+            <button onclick="toggleDropdown('servicesDropdown')" class="dropbtn">SERVICES</button>
+            <div id="servicesDropdown" class="dropdown-content">
+                <a href="#">BUS BOOKING</a>
+                <a href="#">CAR RENTAL</a>
+                <a href="#">MORE</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="toggleDropdown('contactDropdown')" class="dropbtn">CONTACT US</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(id) {
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                if (dropdown.id !== id) {
+                    dropdown.classList.remove('show');
+                }
+            });
+            document.getElementById(id).classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        }
+        </script>
+    <style>
+        .carousel-item {
+            height: 32rem;
+            background: black;
+            position: relative;
+            color: white;
+            background-position: center;
+            background-size: cover;
+        }
+        .btn-primary {
+            color: blue;
+            background-color: aliceblue;
+        }
+        
+  
+        
+        .container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding-bottom: 50px;
+            }
+        .container p{
+            font-size: 18px;
+        }
+    </style>
+    <div id="mycarousel" class="carousel slide carousal-fade" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#mycarousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#mycarousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#mycarousel" data-bs-slide-to="2"></li>
+            <li data-bs-target="#mycarousel" data-bs-slide-to="3"></li>
+            <li data-bs-target="#mycarousel" data-bs-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" >
+            <div class="carousel-item active" style="height: fit-content;">
+                <img src="images/eiffel-tower-paris.jpg" class="d-block w-100" alt="image">
+            
+                <div class="container">
+                    <h1>Paris</h1>
+                    <p>Paris, the capital of France, is renowned for its iconic landmarks like the Eiffel Tower, rich history, vibrant culture, world-class museums, exquisite cuisine, and romantic ambiance.</p>
+                    <a href="signpage.html" class="btn btn-lg btn-primary" target="_blank">Signup</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="height: fit-content;">
+                <img src="delhi2.jpg" class="d-block w-100 img-fluid" alt="img" width="60" height="60">
+                <div class="container">
+                    <h1>India</h1>
+                    <p>India, a diverse and populous country in South Asia, is known for its rich cultural heritage, ancient history, diverse landscapes, vibrant festivals, and rapidly growing economy. It is the world's largest democracy.</p>
+                    <a href="signpage.html" class="btn btn-lg btn-primary" target="_blank">Signup</a>
+                </div>
+            </div>
+
+    <div class="carousel-item" style="height: fit-content;">
+        <img src="images/uae.avif" class="d-block w-100 img-fluid" alt="img" width="60" height="60">
+        <div class="container">
+            <h1>UAE</h1>
+            <p>The United Arab Emirates (UAE), located in the Middle East, is known for its modern cities, stunning skyscrapers like the Burj Khalifa, luxurious shopping malls, cultural diversity, desert landscapes, and thriving economy driven by oil and tourism.</p>
+            <a href="signpage.html" class="btn btn-lg btn-primary" target="_blank">Signup</a>
+        </div>
+    </div>
+    <div class="carousel-item" style="height: fit-content;">
+        <img src="sydney.jpg" class="d-block w-100 img-fluid" alt="img" width="60" height="60">
+        <div class="container">
+            <h1>Austraila</h1>
+            <p>Australia, a vast island continent in the Southern Hemisphere, is famed for its diverse landscapes from the Great Barrier Reef to the Outback, unique wildlife like kangaroos and koalas, vibrant cities such as Sydney and Melbourne, and rich Aboriginal heritage.</p>
+            <a href="signpage.html" class="btn btn-lg btn-primary" target="_blank">Signup</a>
+        </div>
+    </div>
+    <div class="carousel-item" style="height: fit-content;">
+        <img src="images/usa.webp" class="d-block w-100 img-fluid" alt="img" width="60" height="60">
+        <div class="container">
+            <h1>USA</h1>
+            <p>The USA is a top tourist destination known for its iconic landmarks such as the Statue of Liberty and Grand Canyon, vibrant cities like New York and San Francisco, cultural attractions such as museums and theaters, and natural wonders including national parks and coastlines.</p>
+            <a href="signpage.html" class="btn btn-lg btn-primary" target="_blank">Signup</a>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   <div class="searchbar"><p>For exploring your Adventure </p></div>
+    <div class="des"><p>We have a wide range of servies,feel free to checkout</p>
+        <form id="search" class="search" role="search">
+            <label class="offscreen" for="searchText" >
+             Enter a search term or phrase
+            </label>
+            <input type="text" id="searchText"
+            class="searchText"
+            name="searchText"
+            autocomplete="off"
+            role="searchbox"
+            required>
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div id="slide-1" class="owl-carousel">
+            <div> <img src="delhi2.jpg" alt=""> </div>
+            <div> <img src="australia.avif" alt=""> </div>
+            <div> <img src="malaysia1.jpg" alt=""></div>
+            <div> <img src="usa edit.jpg" alt=""></div>
+            <div><img src="images/korea.avif" alt=""></div>
+            <div> <img src="hollywood.jpg" alt=""></div>
+            <div> <img src="paris 2.avif" alt=""></div>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            let userLocation = null;
+
+            // Function to detect user location
+            function detectLocation() {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLocation = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        };
+                        console.log("Location detected:", userLocation);
+                    },
+                    (error) => {
+                        alert("Please enable GPS or connect to the internet.");
+                    }
+                );
+            }
+
+    // Detect location on page load
+    detectLocation();
+});
+
+          </script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            $(document).ready(function(){
+                $("#slide-1").owlCarousel({
+                    margin:20,
+                    loop:true,
+                    autoplay:true,
+                    autoplayTimeout:1000,
+                    autoplayHoverPause:true,
+                    responsiveClass:true,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:true,
+                            autoplay:true,
+
+                        },
+                        600:{
+                            items:3,
+                            nav:true,
+                            autoplay:true,
+                        },
+                        1000:{
+                            items:3,
+                            nav:true,
+                            loop:true,
+                            autoplay:true,
+                        }
+                    }    
+                 });
+              });
+        </script>
+        <script src="./index.js"></script>
+        <footer class="footer">
+            <h5>SkyNav</h5>
+            <a href="#">About</a><br>
+            <a href="#">MultiMedia</a><br>
+            <a href="#">Help</a><br>
+            <a href="#">Contact</a><br>
+            <a href="#">Sitemap</a><br>
+            <div class="contact-us">
+                <i class="fa fa-home"></i>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero assumenda dicta itaque incidunt, eaque voluptatum.</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8679.704908724385!2d78.41462758406792!3d17.600725471660564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8ecfe1af26dd%3A0x65666fa3c4a256d2!2sInstitute%20of%20Aeronautical%20Engineering!5e0!3m2!1sen!2sin!4v1720157907003!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-telegram"></i>
+        </div>
+
+        </footer>     
+    </body>
+    </html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Transit Trip Planner</title>
+    <style>
+      *{
+        scroll-behavior: smooth;
+      }
+      body{
+        width:auto;
+        margin: 0px;
+      }
+      .top {
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+      color: black;
+      text-indent: 5px;
+      background-color: rgb(155, 201, 228);
+      padding:10px 0px 5px 5px;
+    }
+
+
+    #logo {
+      margin: 0px 0px 0px 2px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      background-color: white;
+    }
+
+  .names:hover {
+      color: lightblue;
+  }
+
+  .names {
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    width: auto;
+    padding: 5px 0 0 80px;
+    text-indent: 15px;
+    cursor: pointer;
+  }
+
+  .dropbtn {
+    background-color:white ;
+    color: #3498DB;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+    margin-left: 60px;
+  }
+
+
+  .dropbtn:hover, .dropbtn:focus {
+      background-color:#3498DB;
+      color: white;
+  }
+
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+  }
+
+
+  .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+
+
+  .dropdown-content a:hover {
+      background-color: #ddd;
+  }
+  .show {
+    display: block;
+  }
+.container {
+    width: 40%;
+    margin: 50px auto;
+    background: lightblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"], input[type="time"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.plan-button {
+    padding: 10px 20px;
+    background: #fff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.plan-button:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: #000;
+}
+
+#results {
+    margin-top: 30px;
+}
+
+  #places-list, #total-time {
+      margin: 10px 0;
+  }
+  #homebtn{
+      text-decoration: none;
+      color: #3498DB;
+    }
+  #homebtn:hover, #homebtn:focus{
+    background-color: #3498DB;
+    color: #fff;
+  }
+
+    </style>
+</head>
+<body>
+  <div class="top">
+    <p>Welcome to SkyNav.com Continue to india website <b><a href="#">SkyNavIndia.com</a></b></p>
+</div>
+<div id="logo">
+    <img src="Tour Travel Business Logo.png" width="150" height="150" alt="logo">
+    <div class="dropdown">
+        <button onclick="toggleDropdown('homeDropdown')" class="dropbtn"><a href="index.html" id="homebtn">HOME</a></button>
+    </div>
+    <div class="dropdown">
+        <button onclick="toggleDropdown('holidayDropdown')" class="dropbtn">HOLIDAY PACKAGES</button>
+        <div id="holidayDropdown" class="dropdown-content">
+            <a href="internationalpackages.html">INTERNATIONAL PACKAGES</a>
+            <a href="daytrip.html">DAY TRIP</a>
+            <a href="#">CUSTOMIZE PACKAGES</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button onclick="toggleDropdown('testimonialDropdown')" class="dropbtn">TESTIMONIAL</button>
+    </div>
+    <div class="dropdown">
+        <button onclick="toggleDropdown('servicesDropdown')" class="dropbtn">SERVICES</button>
+        <div id="servicesDropdown" class="dropdown-content">
+            <a href="#">BUS BOOKING</a>
+            <a href="#">CAR RENTAL</a>
+            <a href="#">MORE</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button onclick="toggleDropdown('contactDropdown')" class="dropbtn">CONTACT US</button>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(id) {
+    
+    
+      document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            if (dropdown.id !== id) {
+                dropdown.classList.remove('show');
+            }
+        });
+        document.getElementById(id).classList.toggle('show');
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                dropdown.classList.remove('show');
+            });
+        }
+    }
+</script>
+    <div class="container">
+        
+        <h1>Sky Nav</h1>
+        <form id="trip-form">
+            <div class="form-group">
+                <label for="transit-hours">Transit Hours:</label>
+                <input type="number" id="transit-hours" name="transit-hours" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="departure-time">Departure Time:</label>
+                <input type="time" id="departure-time" name="departure-time" required>
+            </div>
+            <button type="submit" class="plan-button">Plan My Trip</button>
+        </form>
+        <div id="results">
+            <h2>Suggested Trip</h2>
+            <div id="places-list"></div>
+            <p id="total-time"></p>
+        </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("trip-form");
+    const results = document.getElementById("results");
+    const placesList = document.getElementById("places-list");
+    const totalTime = document.getElementById("total-time");
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                const transitHours = parseInt(document.getElementById("transit-hours").value);
+                const maxMinutes = transitHours * 60;
+                findNearbyPlaces(latitude, longitude, maxMinutes);
+            },
+            (error) => {
+                alert("Please enable GPS or connect to the internet.");
+            }
+        );
+    });
+
+    function findNearbyPlaces(lat, lng, maxMinutes) {
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        const request = {
+            location: new google.maps.LatLng(lat, lng),
+            radius: 10000, // 10 km radius
+            type: ['tourist_attraction']
+        };
+
+        service.nearbySearch(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                let totalTimeSpent = 0;
+                let visitablePlaces = [];
+                
+                for (let place of results) {
+                    if (totalTimeSpent + 60 <= maxMinutes) { // Assuming each place takes 1 hour to visit
+                        visitablePlaces.push(place.name);
+                        totalTimeSpent += 60;
+                    } else {
+                        break;
+                    }
+                }
+
+                placesList.innerText = `Places to visit: ${visitablePlaces.join(", ")}`;
+                totalTime.innerText = `Total time spent: ${totalTimeSpent} minutes`;
+            }
+        });
+    }
+});
+
+    </script>
+</body>
+</html>

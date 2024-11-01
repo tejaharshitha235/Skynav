@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Report</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+    margin: 0;
+    padding: 20px;
+    background-image: url(maldives.jpg);
+    background-size: cover;
+}
+
+.container {
+    width:100%;
+    margin:  auto;
+    text-align: center;
+}
+
+form {
+  background-color: rgba(0,0,0,0.7);
+  width: 500px;
+  border: 2px solid transparent;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+  color: white;
+
+}
+
+input {
+  background-color: rgba(0,0,0,0);
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border-color: lightgray;
+}
+
+button{
+  color: black;
+  background-color: lightblue;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+}
+table {
+  background-color: rgba(0,0,0,0.7);
+    width: 1000px;
+    border-collapse: collapse;
+    margin: 35px auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: white;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Passenger Report</h1>
+        <form id="passenger-form">
+            <input type="text" id="name" placeholder="Passenger Name" required>
+            <input type="text" id="flightNumber" placeholder="Flight Number" required>
+            <input type="time" id="arrivalTime" placeholder="Arrival Time" required>
+            <input type="time" id="departureTime" placeholder="Departure Time" required>
+            <input type="number" id="transitHours" placeholder="Transit Hours" required>
+            <button type="submit">Add Passenger</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Passenger Name</th>
+                    <th>Flight Number</th>
+                    <th>Arrival Time</th>
+                    <th>Departure Time</th>
+                    <th>Transit Hours</th>
+                </tr>
+            </thead>
+            <tbody id="passenger-data">
+                <!-- Data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const passengerForm = document.getElementById('passenger-form');
+    const passengerTable = document.getElementById('passenger-data');
+
+    passengerForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const flightNumber = document.getElementById('flightNumber').value;
+        const arrivalTime = document.getElementById('arrivalTime').value;
+        const departureTime = document.getElementById('departureTime').value;
+        const transitHours = document.getElementById('transitHours').value;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${flightNumber}</td>
+            <td>${arrivalTime}</td>
+            <td>${departureTime}</td>
+            <td>${transitHours}</td>
+        `;
+        passengerTable.appendChild(row);
+
+        // Set a timeout to alert the user when the transition hour is ending
+        const transitionTime = transitHours * 60 * 60 * 1000; // Convert hours to milliseconds
+        setTimeout(() => {
+            alert(`Transition hour for flight ${flightNumber} is ending soon!`);
+        }, transitionTime);
+
+        passengerForm.reset();
+    });
+});
+
+    </script>
+</body>
+</html>

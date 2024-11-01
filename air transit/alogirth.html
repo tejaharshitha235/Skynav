@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Transit Trip Planner</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"], input[type="time"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: auto;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#results {
+    margin-top: 30px;
+}
+
+#places-list, #total-time {
+    margin: 10px 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Air Transit Trip Planner</h1>
+        <form id="trip-form">
+            <div class="form-group">
+                <label for="transit-hours">Transit Hours:</label>
+                <input type="number" id="transit-hours" name="transit-hours" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="departure-time">Departure Time:</label>
+                <input type="time" id="departure-time" name="departure-time" required>
+            </div>
+            <button type="submit">Plan My Trip</button>
+        </form>
+        <div id="results">
+            <h2>Suggested Trip</h2>
+            <div id="places-list"></div>
+            <p id="total-time"></p>
+        </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("trip-form");
+    const results = document.getElementById("results");
+    const placesList = document.getElementById("places-list");
+    const totalTime = document.getElementById("total-time");
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                const transitHours = parseInt(document.getElementById("transit-hours").value);
+                const maxMinutes = transitHours * 60;
+                findNearbyPlaces(latitude, longitude, maxMinutes);
+            },
+            (error) => {
+                alert("Please enable GPS or connect to the internet.");
+            }
+        );
+    });
+
+    function findNearbyPlaces(lat, lng, maxMinutes) {
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        const request = {
+            location: new google.maps.LatLng(lat, lng),
+            radius: 10000, // 10 km radius
+            type: ['tourist_attraction']
+        };
+
+        service.nearbySearch(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                let totalTimeSpent = 0;
+                let visitablePlaces = [];
+                
+                for (let place of results) {
+                    if (totalTimeSpent + 60 <= maxMinutes) { // Assuming each place takes 1 hour to visit
+                        visitablePlaces.push(place.name);
+                        totalTimeSpent += 60;
+                    } else {
+                        break;
+                    }
+                }
+
+                placesList.innerText = `Places to visit: ${visitablePlaces.join(", ")}`;
+                totalTime.innerText = `Total time spent: ${totalTimeSpent} minutes`;
+            }
+        });
+    }
+});
+
+    </script>
+</body>
+</html>
